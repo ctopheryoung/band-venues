@@ -34,6 +34,40 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: band_venues; Type: TABLE; Schema: public; Owner: topher
+--
+
+CREATE TABLE band_venues (
+    id integer NOT NULL,
+    band_id integer,
+    venue_id integer
+);
+
+
+ALTER TABLE band_venues OWNER TO topher;
+
+--
+-- Name: band_venues_id_seq; Type: SEQUENCE; Schema: public; Owner: topher
+--
+
+CREATE SEQUENCE band_venues_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE band_venues_id_seq OWNER TO topher;
+
+--
+-- Name: band_venues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: topher
+--
+
+ALTER SEQUENCE band_venues_id_seq OWNED BY band_venues.id;
+
+
+--
 -- Name: bands; Type: TABLE; Schema: public; Owner: topher
 --
 
@@ -103,6 +137,13 @@ ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: topher
 --
 
+ALTER TABLE ONLY band_venues ALTER COLUMN id SET DEFAULT nextval('band_venues_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: topher
+--
+
 ALTER TABLE ONLY bands ALTER COLUMN id SET DEFAULT nextval('bands_id_seq'::regclass);
 
 
@@ -111,6 +152,21 @@ ALTER TABLE ONLY bands ALTER COLUMN id SET DEFAULT nextval('bands_id_seq'::regcl
 --
 
 ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
+
+
+--
+-- Data for Name: band_venues; Type: TABLE DATA; Schema: public; Owner: topher
+--
+
+COPY band_venues (id, band_id, venue_id) FROM stdin;
+\.
+
+
+--
+-- Name: band_venues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: topher
+--
+
+SELECT pg_catalog.setval('band_venues_id_seq', 1, false);
 
 
 --
@@ -141,6 +197,14 @@ COPY venues (id, name) FROM stdin;
 --
 
 SELECT pg_catalog.setval('venues_id_seq', 1, false);
+
+
+--
+-- Name: band_venues_pkey; Type: CONSTRAINT; Schema: public; Owner: topher
+--
+
+ALTER TABLE ONLY band_venues
+    ADD CONSTRAINT band_venues_pkey PRIMARY KEY (id);
 
 
 --
