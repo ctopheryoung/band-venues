@@ -90,4 +90,13 @@ public class VenueTest {
     assertEquals(Venue.all().size(), 0);
   }
 
+  @Test
+  public void update_updatesVenueNameInDatabase() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+    testVenue.update("Washington High");
+    Venue savedVenue = Venue.find(testVenue.getId());
+    assertEquals(savedVenue.getName(), "Washington High");
+  }
+
 }
