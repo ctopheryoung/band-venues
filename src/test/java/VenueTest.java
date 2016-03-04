@@ -77,4 +77,10 @@ public class VenueTest {
     assertEquals(Venue.find(secondVenue.getId()), secondVenue);
   }
 
+  @Test
+  public void find_returnsNullWhenNoVenueFound_null() {
+    assertTrue(Venue.find(999) == null);
+  }
+
+
 }

@@ -76,11 +76,11 @@ public class BandTest {
     assertEquals(Band.find(secondBand.getId()), secondBand);
   }
 
-  // @Test
-  // public void find_returnsNullWhenNoBandFound_null() {
-  //   assertTrue(Band.find(999) == null);
-  // }
-  //
+  @Test
+  public void find_returnsNullWhenNoBandFound_null() {
+    assertTrue(Band.find(999) == null);
+  }
+
   // @Test
   // public void delete_deleteDeletesBand() {
   //   Band myBand = new Band("Fruition");
