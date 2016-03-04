@@ -33,4 +33,19 @@ public class VenueTest {
     testVenue.save();
     assertTrue(Venue.all().get(0).equals(testVenue));
   }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+    Venue savedVenue = Venue.all().get(0);
+    assertEquals(testVenue.getId(), savedVenue.getId());
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+    assertEquals(Venue.all().get(0).getName(), "Revolution Hall");
+  }
 }
