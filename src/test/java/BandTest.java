@@ -27,12 +27,12 @@ public class BandTest {
     assertTrue(firstBand.equals(secondBand));
   }
 
-  // @Test
-  // public void equals_returnsTrueIfSavedBandsAretheSame() {
-  //   Band testBand = new Band("Fruition");
-  //   testBand.save();
-  //   assertTrue(Band.all().get(0).equals(testBand));
-  // }
+  @Test
+  public void equals_returnsTrueIfSavedBandsAretheSame() {
+    Band testBand = new Band("Fruition");
+    testBand.save();
+    assertTrue(Band.all().get(0).equals(testBand));
+  }
 
   // @Test
   // public void save_assignsIdToObject() {

@@ -30,6 +30,16 @@ public class Band {
     return id;
   }
   //CREATE
+  public void save() {
+    String sql = "INSERT INTO bands(name) VALUES (:name)";
+    try(Connection con = DB.sql2o.open()) {
+      this.id = (int) con.createQuery(sql,true)
+      .addParameter("name", name)
+      .executeUpdate()
+      .getKey();
+    }
+  }
+
   //READ
   public static List<Band> all() {
     String sql = "SELECT id, name FROM bands";

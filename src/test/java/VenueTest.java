@@ -27,4 +27,10 @@ public class VenueTest {
     assertTrue(firstVenue.equals(secondVenue));
   }
 
+  @Test
+  public void equals_returnsTrueIfSavedVenuesAretheSame() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+    assertTrue(Venue.all().get(0).equals(testVenue));
+  }
 }
