@@ -81,13 +81,14 @@ public class BandTest {
     assertTrue(Band.find(999) == null);
   }
 
-  // @Test
-  // public void delete_deleteDeletesBand() {
-  //   Band myBand = new Band("Fruition");
-  //   myBand.save();
-  //   myBand.delete();
-  //   assertEquals(Band.all().size(), 0);
-  // }
+  @Test
+  public void delete_deleteDeletesBand() {
+    Band testBand = new Band("Fruition");
+    testBand.save();
+    testBand.delete();
+    assertEquals(Band.all().size(), 0);
+  }
+
   //TESTS TO BE USED AFTER RECIPE CLASS IS SET UP
   // @Test
   // public void addRecipe_addsRecipeForIngredient() {

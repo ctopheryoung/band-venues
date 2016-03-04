@@ -70,8 +70,8 @@ public class VenueTest {
 
   @Test
   public void find_returnsVenueWithSameId_secondVenue() {
-    Venue firstVenue = new Venue("Fruition");
-    Venue secondVenue = new Venue("Chili Powder");
+    Venue firstVenue = new Venue("Revolution Hall");
+    Venue secondVenue = new Venue("Crystal Ballroom");
     firstVenue.save();
     secondVenue.save();
     assertEquals(Venue.find(secondVenue.getId()), secondVenue);
@@ -82,5 +82,12 @@ public class VenueTest {
     assertTrue(Venue.find(999) == null);
   }
 
+  @Test
+  public void delete_deleteDeletesVenue() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+    testVenue.delete();
+    assertEquals(Venue.all().size(), 0);
+  }
 
 }
