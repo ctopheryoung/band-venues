@@ -40,6 +40,15 @@ public class Venue {
     }
   }
 
+  public void addBand(Band band) {
+    String sql = "INSERT INTO band_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+      .addParameter("band_id", band.getId())
+      .addParameter("venue_id", id)
+      .executeUpdate();
+    }
+  }
   //READ
   public static List<Venue> all() {
     String sql = "SELECT id, name FROM venues";
@@ -48,6 +57,7 @@ public class Venue {
       .executeAndFetch(Venue.class);
     }
   }
+
 
   public static Venue find(int id) {
     String sql = "SELECT * FROM venues where id=:id;";
@@ -78,8 +88,9 @@ public class Venue {
     }
   }
 
-  public void addBand(Band band) {
-    String sql = "INSERT INTO band_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+  //DELETE
+  public void removeBand(Band band) {
+    String sql = "DELETE FROM band_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("band_id", band.getId())
@@ -87,7 +98,7 @@ public class Venue {
         .executeUpdate();
     }
   }
-  //DELETE
+
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM venues WHERE id = :id;";

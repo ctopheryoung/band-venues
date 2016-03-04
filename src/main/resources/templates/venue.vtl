@@ -1,0 +1,30 @@
+venue.vtl
+
+<h1>$venue.getName()</h1>
+
+#if($venue.getBands())
+  <p>Here are the bands that have played $venue.getName():</p>
+  <ul>
+    #foreach($band in $venue.getBands())
+    <!--USE THIS STRING IF YOU WANT TO DELETE BANDS HERE - MAYBE MODIFY TO REMOVE FROM LIST WITHOUT DELETING? <form action="/venues/$venue.getId()/remove" method="post"><input id="band_id" name="band_id" type="hidden" value="$band.getId()"><button type="submit">Remove</button></form> -->
+      <li>$band.getName()</li>
+    #end
+  </ul>
+#end
+
+<h4>Add a band that has played $venue.getName():</h4>
+
+<form action='/add_bands' method='post'>
+    <input id="venue_id" name="venue_id" type="hidden" value="$venue.getId()">
+    <label for="band">Select a band</label>
+    <select id='band' name='band' type='text'>
+      #foreach($band in $allBands)
+        <option value="$venue.getId()">$band.getName()</option>
+      #end
+    </select>
+    <button type='submit'>Add Band</button>
+</form>
+
+<p><a href="/venues/$venue.getId()/edit">Change Venue Name</a></p>
+
+<p><a href='/'>Home</a></p>
