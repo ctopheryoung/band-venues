@@ -1,6 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
+import java.util.List;
+
 
 public class VenueTest {
 
@@ -99,4 +101,18 @@ public class VenueTest {
     assertEquals(savedVenue.getName(), "Washington High");
   }
 
+  @Test
+  public void getBands_returnsAllBands_List() {
+    Band myBand = new Band("Fruition");
+    myBand.save();
+
+    Venue myVenue = new Venue("Revolution Hall");
+    myVenue.save();
+
+    myVenue.addBand(myBand);
+
+    List<Band> savedBand = myVenue.getBands();
+    
+    assertEquals(savedBand.size(), 1);
+  }
 }
