@@ -26,7 +26,7 @@ public class BandTest {
   //   Band secondBand = new Band("Onions");
   //   assertTrue(firstBand.equals(secondBand));
   // }
-  //
+
   // @Test
   // public void equals_returnsTrueIfSavedBandsAretheSame() {
   //   Band testBand = new Band("Fruition");
