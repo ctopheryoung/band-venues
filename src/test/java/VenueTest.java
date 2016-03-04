@@ -68,4 +68,13 @@ public class VenueTest {
     assertTrue(Venue.all().contains(secondVenue));
   }
 
+  @Test
+  public void find_returnsVenueWithSameId_secondVenue() {
+    Venue firstVenue = new Venue("Fruition");
+    Venue secondVenue = new Venue("Chili Powder");
+    firstVenue.save();
+    secondVenue.save();
+    assertEquals(Venue.find(secondVenue.getId()), secondVenue);
+  }
+
 }
