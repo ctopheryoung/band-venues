@@ -56,17 +56,17 @@ public class BandTest {
     Band savedBand = Band.find(testBand.getId());
     assertEquals(savedBand.getName(), "Fruition");
   }
-  //
-  // @Test
-  // public void all_returnsAllInstancesOfBand_true() {
-  //   Band firstBand = new Band("Fruition");
-  //   Band secondBand = new Band("Chili Powder");
-  //   firstBand.save();
-  //   secondBand.save();
-  //   assertTrue(Band.all().contains(firstBand));
-  //   assertTrue(Band.all().contains(secondBand));
-  // }
-  //
+  
+  @Test
+  public void all_returnsAllInstancesOfBand_true() {
+    Band firstBand = new Band("Fruition");
+    Band secondBand = new Band("Chili Powder");
+    firstBand.save();
+    secondBand.save();
+    assertTrue(Band.all().contains(firstBand));
+    assertTrue(Band.all().contains(secondBand));
+  }
+
   // @Test
   // public void find_returnsBandWithSameId_secondBand() {
   //   Band firstBand = new Band("Fruition");
