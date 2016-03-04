@@ -59,4 +59,17 @@ public class Venue {
   }
   //UPDATE
   //DELETE
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM venues WHERE id = :id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+
+      String enrollmentsQuery = "DELETE FROM band_venues WHERE venue_id = :venueId";
+      con.createQuery(enrollmentsQuery)
+        .addParameter("venueId", id)
+        .executeUpdate();
+    }
+  }
 }
