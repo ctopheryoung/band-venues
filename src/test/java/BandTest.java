@@ -89,6 +89,15 @@ public class BandTest {
     assertEquals(Band.all().size(), 0);
   }
 
+  @Test
+  public void update_updatesBandNameInDatabase() {
+    Band testBand = new Band("Fruition");
+    testBand.save();
+    testBand.update("Fruit Ions");
+    Band savedBand = Band.find(testBand.getId());
+    assertEquals(savedBand.getName(), "Fruit Ions");
+  }
+
   //TESTS TO BE USED AFTER RECIPE CLASS IS SET UP
   // @Test
   // public void addRecipe_addsRecipeForIngredient() {

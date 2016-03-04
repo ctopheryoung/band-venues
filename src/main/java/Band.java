@@ -58,6 +58,15 @@ public class Band {
     }
   }
   //UPDATE
+  public void update(String name) {
+    String sql = "UPDATE bands SET name = :name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
   //DELETE
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
