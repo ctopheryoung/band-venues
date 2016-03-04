@@ -1,0 +1,18 @@
+bands.vtl
+
+<h1>Band List</h1>
+
+<p>Add a new band:</p>
+
+<form action="/bands" method="post">
+  <label for="name">Band Name</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add Band</button>
+</form>
+
+#foreach ($band in $bands)
+  <li><a href="/bands/$band.getId()">$band.getName()</a></li>
+#end
+
+<p><a href='/'>Home</a></p>
