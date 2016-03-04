@@ -95,8 +95,8 @@ public class Venue {
         .addParameter("id", id)
         .executeUpdate();
 
-      String enrollmentsQuery = "DELETE FROM band_venues WHERE venue_id = :venueId";
-      con.createQuery(enrollmentsQuery)
+      String bandVenuesQuery = "DELETE FROM band_venues WHERE venue_id = :venueId";
+      con.createQuery(bandVenuesQuery)
         .addParameter("venueId", id)
         .executeUpdate();
     }
