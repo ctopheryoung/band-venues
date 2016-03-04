@@ -34,21 +34,21 @@ public class BandTest {
     assertTrue(Band.all().get(0).equals(testBand));
   }
 
-  // @Test
-  // public void save_assignsIdToObject() {
-  //   Band testBand = new Band("Fruition");
-  //   testBand.save();
-  //   Band savedBand = Band.all().get(0);
-  //   assertEquals(testBand.getId(), savedBand.getId());
-  // }
-  //
-  // @Test
-  // public void save_savesIntoDatabase_true() {
-  //   Band testBand = new Band("Fruition");
-  //   testBand.save();
-  //   assertEquals(Band.all().get(0).getName(), "Fruition");
-  // }
-  //
+  @Test
+  public void save_assignsIdToObject() {
+    Band testBand = new Band("Fruition");
+    testBand.save();
+    Band savedBand = Band.all().get(0);
+    assertEquals(testBand.getId(), savedBand.getId());
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Band testBand = new Band("Fruition");
+    testBand.save();
+    assertEquals(Band.all().get(0).getName(), "Fruition");
+  }
+
   // @Test
   // public void find_findsBandInDatabase_true() {
   //   Band testBand = new Band("Fruition");
