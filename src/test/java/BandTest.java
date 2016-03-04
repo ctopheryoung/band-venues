@@ -2,7 +2,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 
-public class UnitTest {
+public class BandTest {
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
