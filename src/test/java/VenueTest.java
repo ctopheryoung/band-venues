@@ -48,4 +48,12 @@ public class VenueTest {
     testVenue.save();
     assertEquals(Venue.all().get(0).getName(), "Revolution Hall");
   }
+
+  @Test
+  public void find_findsVenueInDatabase_true() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+    Venue savedVenue = Venue.find(testVenue.getId());
+    assertEquals(savedVenue.getName(), "Revolution Hall");
+  }
 }

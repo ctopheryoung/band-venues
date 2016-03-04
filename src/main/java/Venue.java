@@ -48,6 +48,15 @@ public class Venue {
       .executeAndFetch(Venue.class);
     }
   }
+
+  public static Venue find(int id) {
+    String sql = "SELECT * FROM venues where id=:id;";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Venue.class);
+    }
+  }
   //UPDATE
   //DELETE
 }
