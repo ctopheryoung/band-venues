@@ -8,7 +8,7 @@
 
 This is a program to track bands and the venues where they've played concerts. It is a Spark web application written in Java utilizing a postgresql database with full CRUD functionality built into the app.
 
-## Setup
+## Database Setup
 
 ### In PSQL:
 * CREATE DATABASE band_venues
@@ -16,7 +16,7 @@ This is a program to track bands and the venues where they've played concerts. I
 * Create TABLE venues(id serial PRIMARY KEY, name varchar)
 
 #### Or:
-* Download the .sql file in my Github Repo:
+* Download the .sql file in my Github Repo: https://github.com/ctopheryoung/band-venues
 
 ## Technologies Used
 
