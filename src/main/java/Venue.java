@@ -30,9 +30,19 @@ public class Venue {
     return id;
   }
   //CREATE
+  public void save() {
+    String sql = "INSERT INTO venues(name) VALUES (:name)";
+    try(Connection con = DB.sql2o.open()) {
+      this.id = (int) con.createQuery(sql,true)
+      .addParameter("name", name)
+      .executeUpdate()
+      .getKey();
+    }
+  }
+
   //READ
   public static List<Venue> all() {
-    String sql = "SELECT id, name FROM bands";
+    String sql = "SELECT id, name FROM venues";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
       .executeAndFetch(Venue.class);
