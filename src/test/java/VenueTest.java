@@ -56,4 +56,16 @@ public class VenueTest {
     Venue savedVenue = Venue.find(testVenue.getId());
     assertEquals(savedVenue.getName(), "Revolution Hall");
   }
+
+
+  @Test
+  public void all_returnsAllInstancesOfVenue_true() {
+    Venue firstVenue = new Venue("Revolution Hall");
+    Venue secondVenue = new Venue("Crystal Ballroom");
+    firstVenue.save();
+    secondVenue.save();
+    assertTrue(Venue.all().contains(firstVenue));
+    assertTrue(Venue.all().contains(secondVenue));
+  }
+
 }
