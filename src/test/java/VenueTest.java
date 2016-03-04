@@ -105,14 +105,10 @@ public class VenueTest {
   public void getBands_returnsAllBands_List() {
     Band myBand = new Band("Fruition");
     myBand.save();
-
     Venue myVenue = new Venue("Revolution Hall");
     myVenue.save();
-
     myVenue.addBand(myBand);
-
     List<Band> savedBand = myVenue.getBands();
-    
     assertEquals(savedBand.size(), 1);
   }
 }

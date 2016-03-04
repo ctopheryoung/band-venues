@@ -99,6 +99,17 @@ public class BandTest {
     assertEquals(savedBand.getName(), "Fruit Ions");
   }
 
+  @Test
+  public void getVenues_returnsAllVenues_List() {
+    Band myBand = new Band("Fruition");
+    myBand.save();
+    Venue myVenue = new Venue("Revolution Hall");
+    myVenue.save();
+    myBand.addVenue(myVenue);
+    List<Venue> savedVenue = myBand.getVenues();
+    assertEquals(savedVenue.size(), 1);
+  }
+
   //TESTS TO BE USED AFTER RECIPE CLASS IS SET UP
   // @Test
   // public void addRecipe_addsRecipeForIngredient() {
