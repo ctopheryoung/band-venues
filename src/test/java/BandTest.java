@@ -49,13 +49,13 @@ public class BandTest {
     assertEquals(Band.all().get(0).getName(), "Fruition");
   }
 
-  // @Test
-  // public void find_findsBandInDatabase_true() {
-  //   Band testBand = new Band("Fruition");
-  //   testBand.save();
-  //   Band savedBand = Band.find(testBand.getId());
-  //   assertEquals(savedBand.getName(), "Fruition");
-  // }
+  @Test
+  public void find_findsBandInDatabase_true() {
+    Band testBand = new Band("Fruition");
+    testBand.save();
+    Band savedBand = Band.find(testBand.getId());
+    assertEquals(savedBand.getName(), "Fruition");
+  }
   //
   // @Test
   // public void all_returnsAllInstancesOfBand_true() {
