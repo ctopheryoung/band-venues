@@ -15,7 +15,7 @@ This is a program to track bands and the venues where they've played concerts. I
 * CREATE TABLE bands(id serial PRIMARY KEY, name varchar)
 * Create TABLE venues(id serial PRIMARY KEY, name varchar)
 
-### Or:
+#### Or:
 * Download the .sql file in my Github Repo:
 
 ## Technologies Used
