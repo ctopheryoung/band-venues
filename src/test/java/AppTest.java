@@ -54,7 +54,7 @@ public class AppTest extends FluentTest {
   //   goTo(clientDisplay);
   //   assertThat(pageSource()).contains("111-111-1111");
   // }
-  //
+
   // @Test
   // public void clientIsDeletedAndSuccessPageShows() {
   //   Stylist testStylist = new Stylist("Larry");
@@ -69,17 +69,35 @@ public class AppTest extends FluentTest {
   //   assertThat(pageSource()).contains("Delete Successful!");
   // }
   //
-  // @Test
-  // public void allClientsDisplayAllClientNamesOnStylistage() {
-  //   Stylist testStylist = new Stylist("Larry");
-  //   testStylist.save();
-  //   Client firstClient = new Client("Donald Trump", "123-456-7890", testStylist.getId());
-  //   firstClient.save();
-  //   Client secondClient = new Client("Hillary Clinton", "111-111-1111", testStylist.getId());
-  //   secondClient.save();
-  //   String categoryPath = String.format("http://localhost:4567/stylists/%d", testStylist.getId());
-  //   goTo(categoryPath);
-  //   assertThat(pageSource()).contains("Donald Trump");
-  //   assertThat(pageSource()).contains("Hillary Clinton");
-  // }
+  @Test
+  public void allBandsDisplayAllBandNamesOnVenuePage() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+
+    Band firstBand = new Band("Fruition");
+    firstBand.save();
+
+    firstBand.addVenue(testVenue);
+
+    String categoryPath = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(categoryPath);
+    assertThat(pageSource()).contains("Revolution Hall");
+    assertThat(pageSource()).contains("Fruition");
+  }
+
+  @Test
+  public void allVenuesAreDisplayedOnBandPage() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+
+    Band firstBand = new Band("Fruition");
+    firstBand.save();
+
+    testVenue.addBand(firstBand);
+
+    String categoryPath = String.format("http://localhost:4567/bands/%d", firstBand.getId());
+    goTo(categoryPath);
+    assertThat(pageSource()).contains("Revolution Hall");
+    assertThat(pageSource()).contains("Fruition");
+  }
 }
