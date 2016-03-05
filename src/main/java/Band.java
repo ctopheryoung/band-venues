@@ -49,7 +49,7 @@ public class Band {
       .executeUpdate();
     }
   }
-  
+
   //READ
   public static List<Band> all() {
     String sql = "SELECT id, name FROM bands";
@@ -90,7 +90,7 @@ public class Band {
 
   //DELETE
   public void removeVenue(Venue venue) {
-    String sql = "DELETE FROM band_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+    String sql = "DELETE FROM band_venues (band_id, venue_id) WHERE venue_id = :venue_id AND band_id = :band_id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("band_id", id)
@@ -98,6 +98,7 @@ public class Band {
         .executeUpdate();
     }
   }
+
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM bands WHERE id = :id;";

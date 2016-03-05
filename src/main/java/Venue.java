@@ -90,7 +90,7 @@ public class Venue {
 
   //DELETE
   public void removeBand(Band band) {
-    String sql = "DELETE FROM band_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
+    String sql = "DELETE FROM band_venues WHERE band_id = :band_id AND venue_id = :venue_id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("band_id", band.getId())
