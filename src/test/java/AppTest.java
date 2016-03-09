@@ -52,8 +52,8 @@ public class AppTest extends FluentTest {
 
     firstBand.addVenue(testVenue);
 
-    String categoryPath = String.format("http://localhost:4567/venues/%d", testVenue.getId());
-    goTo(categoryPath);
+    String venuePath = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(venuePath);
     assertThat(pageSource()).contains("Revolution Hall");
     assertThat(pageSource()).contains("Fruition");
   }
@@ -68,9 +68,27 @@ public class AppTest extends FluentTest {
 
     testVenue.addBand(firstBand);
 
-    String categoryPath = String.format("http://localhost:4567/bands/%d", firstBand.getId());
-    goTo(categoryPath);
+    String bandPagePath = String.format("http://localhost:4567/bands/%d", firstBand.getId());
+    goTo(bandPagePath);
     assertThat(pageSource()).contains("Revolution Hall");
     assertThat(pageSource()).contains("Fruition");
+  }
+
+  @Test
+  public void bandIsDeletedTest() {
+    Venue testVenue = new Venue("Revolution Hall");
+    testVenue.save();
+
+    Band firstBand = new Band("Fruition");
+    firstBand.save();
+
+    testVenue.addBand(firstBand);
+
+    firstBand.delete();
+
+    String venuePath = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(venuePath);
+    assertThat(pageSource()).contains("Revolution Hall");
+    assertThat(pageSource()).doesNotContain("Fruition");
   }
 }
