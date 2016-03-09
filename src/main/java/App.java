@@ -123,12 +123,19 @@ public class App {
     }, new VelocityTemplateEngine());
 
     post("bands/:id", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));
       Band band = Band.find(id);
       String name = request.queryParams("name");
       band.update(name);
       response.redirect("/bands/" + id);
+      return null;
+    });
+
+    post("bands/:id/delete", (request, response) -> {
+      int id = Integer.parseInt(request.params("id"));
+      Band band = Band.find(id);
+      band.delete();
+      response.redirect("/bands");
       return null;
     });
   }
