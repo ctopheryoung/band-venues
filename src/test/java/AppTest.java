@@ -42,33 +42,6 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Revolution Hall");
   }
 
-  // @Test
-  // public void clientPhoneFormIsDisplayed() {
-  //   Stylist testStylist = new Stylist("Larry");
-  //   testStylist.save();
-  //
-  //   Client testClient = new Client("Donald Trump", "111-111-1111", testStylist.getId());
-  //   testClient.save();
-  //
-  //   String clientDisplay = String.format("http://localhost:4567/clients/%d", testClient.getId());
-  //   goTo(clientDisplay);
-  //   assertThat(pageSource()).contains("111-111-1111");
-  // }
-
-  // @Test
-  // public void clientIsDeletedAndSuccessPageShows() {
-  //   Stylist testStylist = new Stylist("Larry");
-  //   testStylist.save();
-  //
-  //   Client testClient = new Client("Donald Trump", "111-111-1111", testStylist.getId());
-  //   testClient.save();
-  //
-  //   String clientPage = String.format("http://localhost:4567/clients/%d", testClient.getId());
-  //   goTo(clientPage);
-  //   click("button", withText("Delete Client"));
-  //   assertThat(pageSource()).contains("Delete Successful!");
-  // }
-  //
   @Test
   public void allBandsDisplayAllBandNamesOnVenuePage() {
     Venue testVenue = new Venue("Revolution Hall");

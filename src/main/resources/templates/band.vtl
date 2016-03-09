@@ -26,4 +26,6 @@ band.vtl
 
 <p><a href="/bands/$band.getId()/edit">Change Band Name</a></p>
 
+<form action="/bands/$band.getId()/delete" method="post"><input id="venue_id" name="venue_id" type="hidden" value="$category.getId()"><button type="submit">Delete Band</button></form>
+
 <p><a href='/'>Home</a></p>
